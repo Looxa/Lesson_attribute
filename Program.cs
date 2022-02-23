@@ -9,7 +9,12 @@ namespace Lesson_AttributeTest
 
         public static void Main()
         {
-            var attributeForClass = typeof(ForClass).GetCustomAttribute<ThisAttributeForClass>();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            var types = assembly.GetTypes();
+            var enumType =types.FirstOrDefault(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(ThisAttributeForClass))); //Поиск необходимого класса 
+
+            var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();                     
             Console.WriteLine(attributeForClass);
             var newClass = new ForClass();
             var textFromAttribute = GetAttribute(typeof(ForClass));
