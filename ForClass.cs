@@ -4,12 +4,12 @@ using Lesson_attribute;
 namespace Lesson_attribute
 {
     [ThisAttributeForClass("SomeText")]
-    public class ForClass
+    public class ForClass                                         // Класс для работы с атрибутами
     {
         [ThisAttributeForProp]
         public string ForAttributeProp { get; set; }
         [ThisAttributeForMethod]
-        public void WorkInClass(string text)
+        public void WorkInClass(string text)                  // Метод, в который передаётся значение атрибута
         {
             Console.WriteLine("Выполнена работа классом, в который было передано значение атрибута: {0}", text);
         }

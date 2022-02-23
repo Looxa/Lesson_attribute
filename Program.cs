@@ -18,13 +18,13 @@ namespace Lesson_AttributeTest
             Console.WriteLine(attributeForClass);
             var newClass = new ForClass();
             var textFromAttribute = GetAttribute(typeof(ForClass));
-            newClass.WorkInClass(textFromAttribute);
+            newClass.WorkInClass(textFromAttribute);  // Передача найденного значения атрибута в метод
             Console.ReadKey();
         }
 
 
 
-        public static string GetAttribute(Type textForAttribut)
+        public static string GetAttribute(Type textForAttribut) // Поиск значения атрибута 
         {
             // Get instance of the attribute.
             ThisAttributeForClass MyAttribute =
