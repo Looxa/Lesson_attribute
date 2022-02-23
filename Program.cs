@@ -26,7 +26,6 @@ namespace Lesson_AttributeTest
 
         public static string GetAttribute(Type textForAttribut) // Поиск значения атрибута 
         {
-            // Get instance of the attribute.
             ThisAttributeForClass MyAttribute =
                 (ThisAttributeForClass)Attribute.GetCustomAttribute(textForAttribut, typeof(ThisAttributeForClass));
 
