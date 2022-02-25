@@ -16,20 +16,17 @@ namespace Lesson_AttributeTest
             
             var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();
             Console.WriteLine(attributeForClass);
-            //var newClass = new ForClass();
-            var textFromAttribute = GetAttribute(typeof(ForClass));
+            var textFromAttribute = GetAttribute(typeof(ForClass)); //Передача текста в переменную
 
-            Type thisClass = typeof(ForClass);
+            Type thisClass = typeof(ForClass);  // Cоздание класса с помощью рефлексии
             Type[] parameters = new Type[] { typeof(string)};
             object[] values = new object[] { textFromAttribute };
             object obj = CreateClass(thisClass, parameters, values);
             ((ForClass)obj).WorkInClass();
 
 
-            /* var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();
-             Console.WriteLine(attributeForClass);
+            /*
              var newClass = new ForClass();
-             var textFromAttribute = GetAttribute(typeof(ForClass));
 
              newClass.WorkInClass(textFromAttribute);  // Передача найденного значения атрибута в метод 
             */
