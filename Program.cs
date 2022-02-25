@@ -13,13 +13,34 @@ namespace Lesson_AttributeTest
             var assembly = Assembly.GetExecutingAssembly();
             var types = assembly.GetTypes();
             var enumType =types.FirstOrDefault(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(ThisAttributeForClass))); //Поиск необходимого класса 
-
-            var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();                     
+            
+            var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();
             Console.WriteLine(attributeForClass);
-            var newClass = new ForClass();
+            //var newClass = new ForClass();
             var textFromAttribute = GetAttribute(typeof(ForClass));
-            newClass.WorkInClass(textFromAttribute);  // Передача найденного значения атрибута в метод
+
+            Type thisClass = typeof(ForClass);
+            Type[] parameters = new Type[] { typeof(string)};
+            object[] values = new object[] { textFromAttribute };
+            object obj = CreateClass(thisClass, parameters, values);
+            ((ForClass)obj).WorkInClass();
+
+
+            /* var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();
+             Console.WriteLine(attributeForClass);
+             var newClass = new ForClass();
+             var textFromAttribute = GetAttribute(typeof(ForClass));
+
+             newClass.WorkInClass(textFromAttribute);  // Передача найденного значения атрибута в метод 
+            */
             Console.ReadKey();
+        }
+
+        static object CreateClass(Type thisType, Type[] parameters, object[] values)
+        {
+            ConstructorInfo info = thisType.GetConstructor(parameters);
+            object thisObj = info.Invoke(values);
+            return thisObj;
         }
 
 
