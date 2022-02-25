@@ -10,14 +10,14 @@ namespace Lesson_AttributeTest
 
             var assembly = Assembly.GetExecutingAssembly();
             var types = assembly.GetTypes();
-            var enumType =types.FirstOrDefault(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(ThisAttributeForClass))); //Поиск необходимого класса 
-            
+            var enumType = types.FirstOrDefault(t => t.CustomAttributes.Any(a => a.AttributeType == typeof(ThisAttributeForClass))); //Поиск необходимого класса 
+
             var attributeForClass = enumType.GetCustomAttributes<ThisAttributeForClass>();
             Console.WriteLine(attributeForClass);
             var textFromAttribute = GetAttribute(typeof(ForClass)); //Передача текста в переменную
 
             Type thisClass = typeof(ForClass);  // Cоздание класса с помощью рефлексии
-            Type[] parameters = new Type[] { typeof(string)};
+            Type[] parameters = new Type[] { typeof(string) };
             object[] values = new object[] { textFromAttribute };
             object obj = CreateClass(thisClass, parameters, values);
             ((ForClass)obj).WorkInClass();
@@ -57,5 +57,4 @@ namespace Lesson_AttributeTest
             }
         }
     }
-
 }
