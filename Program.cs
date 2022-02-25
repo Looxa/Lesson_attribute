@@ -5,8 +5,6 @@ namespace Lesson_AttributeTest
 {
     public class Programm
     {
-        private static Assembly textForAttribut;
-
         public static void Main()
         {
 
